@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // vue 3.0一下中的数据双向绑定原理就是用Object.defineProperty做的
+        
+
+        //不可以写例子 
+        // Function.prototype =  {
+        //     name = '123'
+        // }
+        // //不可配置
+        // a = 10;
+        // delete window.a;
+        // console.log(window.a);  //不可删除暗示全局变量
+
+        // let obj1 = {
+        //     name : 'yang',
+        //     age : 10
+        // }
+        // for(let prop in obj1) {
+        //     console.log(prop);
+        // }
+        
+        var obj = {
+            // name:'aaa'
+        }
+        var tempVal = '';
+        Object.defineProperty(obj,'name',{//第一个参数要设置的对象，要设置的属性,第三个是配置对象如果这个属性之前配置过就是可写可配置可枚举，如果没有配置过则默认都是false
+            value:'yh',
+            writable:false,//是否可写 false 不可写
+            configurable:false,//是否可配置就是删除的意思 false 不可以删除
+            enumerable:true,//是否可以枚举（必须是对象）
+            // get() {
+            //     return tempVal;
+            // },
+            // set(val) {
+            //     tempVal = val;
+            // }
+        })
+        console.log(obj);
+        obj.name = 123;
+        console.log(obj.name);
+
+        //value, writable 和set，get 不能同时使用 
+
+
+        //简化写法
+
+        let obj3 = {
+            tempValue : 'duyi',
+            get name () {
+                return this.tempValue;
+            },
+            set name (val) {
+                this.tempValue = val;
+            }
+        }
+
+        console.log(obj3.name)
+        obj3.name = 123;
+        console.log(obj3.name);
+    </script>
+</body>
+</html>

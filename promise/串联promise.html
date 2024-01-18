@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+
+    <body>
+        <script>
+            // function biaobai(god) {
+            //     return new Promise((reslove, reject) => {
+            //         setTimeout(() => {
+            //             if (Math.random() < 0.5) {
+            //                 //女神同意拉
+            //                 //resolve
+            //                 console.log(`${god}同意了`);
+            //                 reslove(true);
+            //             } else {
+            //                 //resolve
+            //                 console.log(`${god}拒绝了`);
+            //                 reslove(false);
+            //             }
+            //         }, 1000);
+            //     })
+            // }
+
+            // biaobai('女神1').then((resp) => {
+            //     if(resp) {
+            //         return resp;
+            //     }else {
+            //         return biaobai('女神2');
+            //     }
+            // }).then((resp) => {
+            //     if(resp) {
+            //         return;
+            //     }else {
+            //         console.log('都拒绝了');
+            //     }
+            // })
+
+            // console.log(biaobai('test'));
+
+            let pro = new Promise((reslove, reject) => {
+                reject(1);
+            });
+            const pro2 = pro.catch((resp) => {
+                console.log(resp);
+                // throw new Error(3)
+                // return 2
+                return new Promise(() => {})
+            });
+
+            setTimeout(() => {
+                console.log(pro2);
+            }, 1000);
+        </script>
+    </body>
+</html>

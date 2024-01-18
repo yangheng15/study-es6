@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //数组 特点：有序，不定长，支持占队列操作
+        // arr.push()//入栈 
+        // arr.pop()//从后面删
+        // arr.shift()//从前面删
+
+        //数组去重
+        let arr = [1,2,3,3,4,5 ,5];
+        let arr = [1,'1',{}];//对象调用了Object.prototype.toString()
+        Array.prototype.unique = function ()  {
+            let itemIndex = {};
+            let  resArr = [];
+            this.forEach(item => {
+                if(!itemIndex[item]) {
+                    itemIndex[item] = 1;
+                    resArr.push(item);
+                }
+            })
+            console.log(itemIndex);
+            return resArr;
+        }
+        
+        // ES6中新的数据结构
+        // Map Set
+        //使用
+        // let map = new Map();//加强的对象
+        // let obj = new Object();
+        // map.set('1','wxb');//设置
+        // obj['1'] = 'wxb';
+        // console.log(map);
+        // console.log(obj);
+
+        // map.set('1','deb');
+        // obj['1'] = 'dxb';
+        
+        // map.set(1,2);
+        // console.log(map.get(1))//取
+        // console.log(obj['1']);
+
+        // //判断有没有这个key
+        // console.log(map.has('1'));//查
+
+        // //删除
+        // map.delete('1');
+        // console.log(map.has('1'));
+
+        //清除所有 
+        // map.clear();
+        // console.log(map);
+
+        // //map可以增加对象
+        // let obj1 = {name:'yang'};
+        // let obj2 = {};
+        // map.set(obj,1);
+        // map.set(obj2,2);
+        // map.set(true,3);
+        // console.log(map);
+
+        // console.log(map.get(obj2));
+        // map.forEach((value,key,map) => console.log(value,key,map));
+
+        // //对比
+        // let arr1 = [1,2];
+        // let arr = [1,2,obj1,obj2,arr1,{}];
+        // console.log(arr);
+
+        //map初始化可以传参
+        // let map1 = new Map([['name','yang'],[true,'hhh']]);
+        // console.log(map1);
+
+        //map 去重
+        // let obj = {};
+        // arr = [1,'1',1,obj,1,obj];
+        // Array.prototype.unique = function () {
+        //     let itemIndex = new Map();
+        //     let resArr = [];
+        //     this.forEach(item => {
+        //         if(!itemIndex.has(item)){//map对象中如果没有item这个属性就加上然后push进arr
+        //             itemIndex.set(item,'站位');
+        //             resArr.push(item);
+        //         }  
+
+        //     })
+        //     return resArr;
+        // }
+        
+
+        //重要！！！手写map
+        //hash 算法
+        // function myMap() {
+        //     this.init();
+        // }
+        // myMap.prototype.len = 8;
+        // myMap.prototype.bucket = [];
+        // myMap.prototype.init = function () {
+        //     for(let i = 0;i < this.len;i ++) {
+        //         this.bucket[i] = {next : null};
+        //     }
+        // }
+        // myMap.prototype.makeHash = function (key) {
+        //     //数字直接放进去 字符串 charCodeAt()
+        //     let hash = 0;
+        //     if(typeof key == 'string'){
+        //         //去后三位 '1234','12'
+        //         let len = (key.length > 3) ? key.length : 3;
+        //         for(let i = len-3;i < len;i ++ ) {
+        //             hash += (key[i] !== undefined ? key[i].charCodeAt() : 0);
+        //         }
+        //         // key = key.split('').slice(-3).join(''); 
+        //     }else {
+        //         hash = +key;
+
+        //     }
+        //     return hash;
+        // }   
+        // myMap.prototype.set = function(key,value) {
+        //     let hash = this.makeHash(key);
+        //     let list = this.bucket[hash % this.len];//bucket[0:{next : {key,value,next : null} },1:{next : null},....]
+        //     console.log(list.next);//0:{next:null}/第二执行{next:{key:key,value:value,next:null}}
+        //     let nextNode = list;
+        //     while(nextNode.next) {
+        //         console.log(nextNode);
+        //         console.log(nextNode.key == key);
+        //         if(nextNode.next.key === key) {//判断是否是设置过的键值设置过直接覆盖
+        //             nextNode.next.value = value;
+        //             return;
+        //         }else {
+        //             nextNode = nextNode.next;
+        //         }
+        //     }
+        //     nextNode.next = {key,value,next : null} //相当于[{next:{key:key,value:value,next:null}}]
+        // }
+        // myMap.prototype.get = function(key) {
+        //     let hash = this.makeHash(key);
+        //     let list = this.bucket[hash % this.len];//bucket[0:{next : {key,value,next : null} },1:{next : null},....]
+        //     let nextNode = list;
+        //     while(nextNode.next) {//{next : {key,value,next : {key,value,next : {key,value,next : null}}} }第一次取
+        //         if(nextNode.next.key === key) {
+                    
+        //             return nextNode.next.value;
+        //         }else {
+        //             nextNode = nextNode.next;
+        //         }
+        //     }
+        //     return;
+        // }
+        // myMap.prototype.has = function(key) {
+        //     let hash = this.makeHash(key);
+        //     let list = this.bucket[hash % this.len];//bucket[0:{next : {key,value,next : null} },1:{next : null},....]
+        //     let nextNode = list;
+        //     while(nextNode.next) {//{next : {key,value,next : {key,value,next : {key,value,next : null}}} }第一次取
+        //         if(nextNode.next.key === key) {
+                    
+        //             return true;
+        //         }else {
+        //             nextNode = nextNode.next;
+        //         }
+        //     }
+        //     return false;
+        // }
+        // myMap.prototype.delete = function(key) {
+        //     let hash = this.makeHash(key);
+        //     let list = this.bucket[hash % this.len];//bucket[0:{next : {key,value,next : null} },1:{next : null},....]
+        //     let nextNode = list;
+        //     while(nextNode.next) {//{next : {key,value,next : {key,value,next : {key,value,next : null}}} }第一次取
+        //         if(nextNode.next.key === key) {
+        //             nextNode.next = nextNode.next.next;
+        //             return true;
+        //         }else {
+        //             nextNode = nextNode.next;
+        //         }
+        //     }
+        //     return false;
+        // }
+        // myMap.prototype.clear = function(key) {
+        //     this.init();
+        // }
+
+        // let hash = myMap.prototype.makeHash;
+
+        // let map = new myMap();
+        //邻接链表
+
+        //filter 过滤
+        // var personArr = [
+        //     {name:'王刚',scr:'./img/dk.png',des:'颈椎不好',sex:'男'},
+        //     {name:'李帅',scr:'./img/dk.png',des:'颈多收不好',sex:'女'},
+        //     {name:'王五',scr:'./img/dk.png',des:'颈地好',sex:'女'},
+        //     {name:'赵柳',scr:'./img/dk.png',des:'的空间十分好的好',sex:'男'}
+        // ];
+        // var newArr1 = personArr.filter(function (ele,index,self) {
+        //     // if(ele.sex == '男') {
+        //     //     return true;
+        //     // }else {
+        //     //     return false;
+        //     // }
+        //     return ele.sex == '男';//注重返回值，如果为true将会被保存到新数组里false则不保存
+        // },{name:'cst'});
+
+        // var newArr = personArr.map(function (ele,index,self){
+        //     return ele.name + 10;
+        // },{name:'yh'});
+
+        // var initialValue = {name:'yh'}
+        // var newArr = personArr.reduce(function (preValue,curValue,index,sel) {
+        //     console.log(preValue,curValue,index,sel);
+        //     preValue.name += 1;
+        //     return preValue;
+        // },initialValue)
+
+        // console.log(newArr);
+    </script>
+</body>
+</html>

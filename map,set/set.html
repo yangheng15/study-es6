@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let os = new Set([1,2,3,4,true,{name:'yang'},1,2]); //去重
+        console.log(os);
+        let arr = [...os]
+        console.log(arr);
+
+        //并集
+        let arr1 = [1,2,3,4];
+        let arr2= [1,2,4,6];
+        let os1 = new Set([...arr1,...arr2]);
+
+        //交集
+        // 先用set去重 然后用filter 过滤一下 略。  set中有 set.has() 返回布尔  判断是否存在改值
+
+        //差集
+        //和交集一样 只是fitler 取非set.has()
+    </script>
+</body>
+</html>

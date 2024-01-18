@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            class Parent {
+                static sex = "nan"
+                store() {}
+                constructor(name) {
+                    this.name = name;
+                }
+            }
+
+            var intance;
+
+            class Son extends Parent {
+
+                #count = 0;
+
+                static foo() {
+                    console.log('静态方法');
+                    console.log(this.#age); //this = Son 而不是实例
+                }
+
+                static num = 123;
+
+                static #age = 345; //静态私有属性只可以在静态方法中调用
+                
+                constructor() {
+                    intance = super(); //必须先通过父类的构造函数完成塑造，得到与父类同样的实例属性和方法，然后再对其进行加工
+                    console.log(intance);
+                    this.printName = this.printName.bind(this);
+                }
+
+                get value() {
+                    return this.#count;
+                }
+
+                increment() {
+                    this.#count ++;
+                }
+
+                #clear() {
+                    this.$count = 0;
+                }
+
+
+                printName(name = 'there') {
+                    this.print(`Hello ${name}`);
+                }
+
+
+                // printName = (name = 'there') => {
+                //     this.print(`hello${name}`);
+                // };
+
+                print(text) {
+                    console.log(text);
+                }
+            }
+
+            const son = new Son();
+            const { printName } = son;
+            console.log(son === intance); // true
+        </script>
+    </body>
+</html>

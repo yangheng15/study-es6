@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var obj = {
+            name: 'yang'
+        }
+        
+        const pro = new Proxy(obj, {
+            set(target, key, val) {
+                console.log(target, key, val);
+                return Reflect.set(target, key, val)
+            },
+            get(target, key) {
+                console.log(target, key);
+                return Reflect.get(target, key);
+            }
+        })
+
+        console.log(pro.name);
+        console.log(pro['age'] = 18);
+    </script>
+</body>
+</html>

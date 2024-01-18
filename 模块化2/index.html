@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <script type="module" src="./say.js"></script> -->
+    <script type='module'>
+        import { num } from './module'
+        console.log(num);
+    </script>
+    <!-- 会出现跨域 -->
+    <!-- 
+其次，导致跨域的原因是协议、域名、端口号只要有一个不同就会导致跨域，而这里的协议通常是指http协议、https等协议，也就是说http、data、chrome、chrome-extension、https这些协议是支持跨域请求的，而file协议并不支持。
+
+　　file协议：本地文件传输协议，主要目的就是用于访问本地计算机中的文件，好比通过Windows的资源管理器去打开文件或者通过右键单击打开一样，然后通过“file:文件路径”这样的形式去访问。
+
+
+
+     -->
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //class 关键字  私有属性  公有属性(原型属性) 静态属性(函数上的属性)
+        class Plane {
+            static alive() {//静态方法是Plane上面的方法
+                return true;
+            }
+            constructor () {
+                //私有属性
+                this.name = name || '普通飞机';
+                this.blood = 100;
+            }
+            //原型属性
+            fly () {
+                console.log('fly');
+            }
+            //se6 不能再原型上面加非方法属性 se7 支持
+            sex = '男';
+        }
+        let op = new Plane();
+        console.log(op);
+        // op.fly();x
+        // console.log(Plane.alive());
+
+        // class AttrackPlane extends Plane{
+        //     constructor (name) {
+        //         super(name);
+        //         this.logo = 'diyi';
+        //     }
+        //     dan () {
+        //         console.log('dadaadada');
+        //     }
+        // }
+        // var oAp = new AttrackPlane('攻击机');
+        // console.log(oAp);
+
+        // 通过class 创建的prototype原型不能枚举
+        // 静态属性放到函数上面
+    </script>
+</body>
+</html>

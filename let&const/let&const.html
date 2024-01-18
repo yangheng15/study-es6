@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        ECMAScript 是规范 javascript 是浏览器厂商对规范的实现
+        lel 不会变量提升，不会挂在到window上面，不可重复定义
+     -->
+     
+    <!-- 
+         块级作用域
+         {
+             这里面的是块级作用域
+             不可以访问里面的
+             {
+                 可访问外面的
+             }
+         }
+         像 
+         if() {
+            let a = 10;//生命周期就是这个{} 代码块中
+         }
+         funciton () {
+
+         }
+         while() {
+
+         }
+         这都是代码块
+      -->
+    <script>
+        // let msg = 'jjjj';
+        // {
+        //     console.log(msg);//出现暂存性死区，只要在{} 内部有let msg 不管是在前还是在后面，都不会使用外面的msg，所以在前面使用还没有赋值，就使用了就会报错
+        //     let msg = 'hhhhh';
+        // }
+
+        // let arr = []
+        // for(let i = 0;i < 10;i ++) {
+        //     arr[i] = function () {
+        //         console.log(i);
+        //     }
+        // }
+        // arr[1]();
+        // arr[4]();
+
+        //上面代码中，变量i是let声明的，当前的i只在本轮循环有效，所以每一次循环的i其实都是一个新的变量，所以最后输出的是6。你可能会问，如果每一轮循环的变量i都是重新声明的，那它怎么知道上一轮循环的值，从而计算出本轮循环的值？这是因为 JavaScript 引擎内部会记住上一轮循环的值，初始化本轮的变量i时，就在上一轮循环的基础上进行计算
+   
+        //let 必须声明并赋值以后才可以使用，如果在为赋值之前使用会报错，因为tdz暂存性死区 
+
+        // for(let i = 0;i < 3;i ++) {
+        //     let i ='123';
+        //     console.log(i);
+        // }
+        //上面代码正确运行，输出了 3 次abc。这表明函数内部的变量i与循环变量i不在同一个作用域，有各自单独的作用域。
+        // console.log(typeof a);//报错
+        // let a ;
+        // console.log(typeof a);//undefined
+
+        // function test (x) {
+        //     // let x //报错
+        // }
+        // test(5)
+        // function bar(x = y, y = 2) {
+        //     // return [x, y];
+        // }
+
+        // bar(); // 报错
+        console.log(test());
+
+        const test = () => {
+
+        }
+    </script>
+
+</body>
+
+</html>

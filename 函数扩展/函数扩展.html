@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // var person = function () {
+
+        // }
+
+        // let person1 = function () {
+
+        // }
+
+        //返回长度为n的随机数字符串的函数
+        // function Random(n) {
+        //     let max = 1;
+        //     for(let i = 0;i < n; i ++) {
+        //         max *= 10;//1000
+        //     }
+        //     return function () {
+        //         let str = '' + parseInt(Math.random() * max);//0~1  0.56  * 1000 = 560
+        //         let count = n - str.length;
+        //         for(let i = 0;i < count;i ++){
+        //             str += '0';
+        //         }
+        //         return str;
+        //     }
+        // }
+        // let random8 = Random(8);
+        // random8();
+
+        //es6 的函数
+        //1.函数的默认值
+        // function Person (name = 'none') {//var name = 'none'
+        //     this.name = name;
+        //     console.log(this);
+        // }
+        // let p = new Person('wxb');
+        // let p1 = new Person();
+        // let p2 = new Person(undefined);//当你传的值=== undefined 时才会使用默认值 否则都按照你传的来
+        // let p3 = new Person(null);
+
+
+        // 2.传值操作
+        // function test (a,...arg) {//...[2,3,4,5] 
+        //     console.log(a);
+        //     console.log(arg);//是一个数组[]
+        // }
+        // test(1,2,3,4,5);
+
+
+        // let arr = [1,2,3];
+        // function test (a,b,c) {
+        //     console.log(a,b,c);
+        //     console.log(arguments);
+        // }
+        // test(...arr);//...是扒光操作
+
+        // ...运算符作用
+        // 1.数组合并
+        // let arr1 = [1,2,3,4];
+        // let arr2 = [5,6,7,8];
+        // let arr3 = [...arr1,...arr2];
+
+        //es6箭头函数
+        // => 通过它来定义函数
+        // 基本结构 () => {}
+        // let getName = name => name;
+        //对于小括号() 函数的参数有且只有一个的时候才可以不用写
+        // let getName2 = (name) => {}
+        //对于{} 函数体仅仅有一条语句的时候不写
+
+        // let getName1 = function (name) {
+        //     return name;
+        // }
+
+      
+    </script>
+</body>
+</html>

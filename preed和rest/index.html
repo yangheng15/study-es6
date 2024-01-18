@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let company = {
+        name : 'duyi',
+        age : 10
+    }
+
+    let hhh = {
+        leader : {
+            aaa : '11',
+            bbb : 10
+        },
+        num : 10
+    }
+
+    //浅层克隆 缺点
+    let obj = {
+        ...company,
+        ...hhh
+    }
+    console.log(obj);
+
+    //可以使用 但是缺点是属性值不能是方法
+    // let newObj = JSON.parse(JSON.stringify(obj));
+
+    //es6 assion 第一级属性为深度拷贝 第二季为浅克隆
+    // let assign = Object.assign({},company,hhh);
+    // console.log(assign);
+
+</script>
+</body>
+</html>

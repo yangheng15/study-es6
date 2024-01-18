@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Plane.prototype.fly = function () {
+        //     console.log('fly');
+        // }//共有属性
+        // function Plane () {
+        //     this.name = '普通飞机',
+        //     this.fly = function () {
+        //         console.log('fly');
+        //     }
+        //     //飞机的私有属性
+        // }
+        // var oPlan = new Plane();
+
+        // console.log(oPlan);
+        Plane.prototype.fly = function () {
+            console.log('fly');
+        }
+        Plane.prototype.logo = 'yangheng';
+        function Plane (name) {
+            //var this = {__proto__ = Plane.prototype}
+            //共有属性
+            this.name = name || '普通飞机';
+            this.blood = 100;
+        }
+
+
+        Object.setPrototypeOf(AttrackPlane.prototype,Plane.prototype);
+        //相当于AttrackPlane.prototype.__proto__ = Plane.prototype
+        AttrackPlane.prototype.dan = function () {
+            console.log('dadaada');
+
+        }
+        function AttrackPlane (name) {
+            Plane.call(this,name);
+        }
+        AttrackPlane.prototype.hh = 123;
+        var oAp = new AttrackPlane('攻击机');
+        var plan = new Plane();
+        for(var prop in oAp) {
+            console.log(prop);
+        }
+
+
+    // Father.prototype.lastName = "yang";
+    //     function Father() {
+
+    //     }
+    //     function Son() {
+
+    //     }
+    //     var inherit = (function () {
+    //         var middle = function() {}
+    //         return function (Target,Origin) {
+    //             middle.prototype = Origin.prototype;
+    //             Target.prototype = new middle();
+    //             Target.prototype.constuctor = Target;
+    //             Target.prototype.uber = Origin.prototype;
+    //         }
+    //     }());
+    //     inherit(Son,Father);
+    //     var father = new Father();
+    //     var son = new Son();
+    //     console.log(son.lastName);
+
+    </script>
+    <!-- 
+        function middle() {
+            var this = {
+                __proto__ = middle.p
+            }
+        }
+     -->
+</body>
+</html>

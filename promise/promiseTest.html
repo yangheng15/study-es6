@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script src="./newPromise.js"></script>
+        <script>
+            // const pro = new MyPromise((resolve, reject) => {
+            //     resolve(1);
+            // });
+            // const pro2 = pro.then((res) => {
+            //     console.log(res);
+            // })
+            // console.log();
+
+            MyPromise.resolve()
+                .then(() => {
+                    console.log('then1');
+                    MyPromise.resolve().then(() => {
+                        console.log('then1-1');
+                    });
+                })
+                .then(() => {
+                    console.log('then2');
+                });
+            // 串联
+
+            // 测试new MyPromise().resolve()
+            // MyPromise.resolve()
+            //     .then(() => {
+            //         console.log(0);
+            //         return MyPromise.resolve(4);
+            //     })
+            //     .then((res) => {
+            //         console.log(res);
+            //     });
+
+            // MyPromise.resolve()
+            //     .then(() => {
+            //         console.log(1);
+            //     })
+            //     .then(() => {
+            //         console.log(2);
+            //     })
+            //     .then(() => {
+            //         console.log(3);
+            //     })
+            //     .then(() => {
+            //         console.log(5);
+            //     })
+            //     .then(() => {
+            //         console.log(6);
+            //     });
+
+            // MyPromise.all([
+            //     new MyPromise((resolve, reject) => {
+            //         setTimeout(() => {
+            //             resolve(1);
+            //         }, 2000);
+            //     }),
+            //     new MyPromise((resolve, reject) => {
+            //         setTimeout(() => {
+            //             resolve(2);
+            //         }, 3000);
+            //     }),
+            //     new MyPromise((resolve, reject) => {
+            //         setTimeout(() => {
+            //             resolve(3);
+            //         }, 4000);
+            //     }),
+            // ]).then((values) => {
+            //     console.log(values);
+            // }, (err) => {
+            //     console.log(err);
+
+            // })
+        </script>
+    </body>
+</html>

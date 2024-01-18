@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        setTimeout(() => {
+            console.log('settime');
+        }, 0);
+        let op = new Promise((resolve,reject) => {
+            // setTimeout(() => {
+            //     console.log(1);
+            //     Math.random() * 100 > 60 ? resolve('ok') : reject('on');
+            // }, 1000);
+            console.log(1);
+            resolve(1)
+        })
+
+        //注册回掉  then中的回调函数是异步的，异步任务分为宏任务(ajax,setTimeOut..)和微任务(then)，微任务有有限执行权所以会比宏任务限制性
+        op.then((success) => {
+            console.log(2);
+            // console.log(success);
+        },(fail) => {
+            console.log(3);
+
+            // console.log(fail);  
+        }).then(() => {
+
+        },() => {
+
+        })
+
+        //1当上一个then的回调抛出错误，下一个then就会执行失败的回调
+        //2当上一个then里面返回的是promise对象，如果是reject就执行下一个then失败的回调，如果是resolve则执行成功的回调
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    
+     //结构化赋值 可以结构对象和数组
+        
+     let obj = {
+        name : 'obj',
+        age : 10,
+        sex : 'female'
+    }
+
+    // let name,age;
+    // ({name,age} = obj);
+    // console.log(name,age);
+
+    // let {name,age} = obj
+    // console.log(name,age);
+
+    //不同名
+    // let {name : oName,age : oAge,sex = 'male'} = obj;
+    // console.log(oName,oAge,sex);
+
+    let arr = [1,2,3];
+    let {0:x,1:y,2:z} = arr;
+    console.log(x,y,z);
+
+    // let arr = [1,2,3];
+    // let [x,y,z] = arr;
+    // console.log(x,y,z);
+
+    let arr1 = [1,2,3,{name:'yang'}];
+    let [,,,{name}] = arr1;
+    console.log(name);
+    </script>
+</body>
+</html>

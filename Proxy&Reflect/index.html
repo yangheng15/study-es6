@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <input type="text">
+    <div class="show"></div>
+</head>
+
+<body>
+    <script>
+        const oInput = document.getElementsByTagName('input')[0];
+        const oDiv = document.getElementsByClassName('show')[0];
+        let oData = {
+            val: 'yang',
+            _val: '男'
+        };
+        update();
+        oInput.oninput = function () {
+            oProxy.val = this.value;
+        };
+        function update() {
+            oDiv.innerText = oData.val;
+        }
+        let oProxy = new Proxy(oData, {
+            set(target, key, value, receiver) {
+                console.log(target, key, value, receiver);
+                Reflect.set(target, key, value);
+                update();
+            },
+            get(target, key, receiver) {
+                console.log(target, key)
+                return Reflect.get(target, key);//去target对象 也就是oData中的key属性里面的值
+            },
+            has(target, key) {// 过滤私有属性，和不错在的属性
+                return key.indexOf('_') != -1 ? false : key in target;
+            }
+        });
+    </script>
+</body>
+
+</html>

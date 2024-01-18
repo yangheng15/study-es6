@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //收集
+        // function sum(...arg) {
+        //     let sum = 0;
+        //     arg.forEach((ele) => {
+        //         sum += ele;
+        //     })
+        //     // console.log(ele);
+        //     console.log(sum);
+        // }
+        // sum(1,2,3);
+
+        // function sum () {
+        //     console.log(a);
+        //     let a = 123;//不能变量提升 var 回事undefined
+        // }
+        // sum();
+    
+        // function sum (a,b,...arg) {//...arg必须是最后一个参数
+        //     console.log(a)
+        //     console.log(b)
+        //     console.log(arg);
+        // }
+        // sum(1,2,3,4,5);
+
+        // 发散
+        let arr = [1,2,3,4];
+        console.log(...arr);
+
+        /* 链判断运算符 ?. */
+        let obj = {
+            fun: () => {
+                console.log('我是个函数');
+                
+            },
+            lover: {
+                s: '篮球'
+            }
+        }
+
+        console.log(obj.fun());
+        console.log(obj.fun1?.()); //如果当前函数存在立即执行 否则返回undefined
+        console.log(obj.lover?.a); //当前属性存在返回属性值 否则返回undefined
+        console.log(obj.lover.s);
+        
+        
+        
+    </script>
+</body>
+</html>

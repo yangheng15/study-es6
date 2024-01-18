@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text">
+    <div id="show"></div>
+    <script>    
+        var odiv = document.getElementById('show');
+        var oinput = document.getElementsByTagName("input")[0];
+        oinput.oninput = function () {
+            oData.ovalue.value = this.value;
+        }
+        var oData = {
+            ovalue : {
+                value : 'duyi',
+            },
+            name:'hhh'
+           
+        }
+        function upDate() {
+            odiv.innerText = oData.ovalue.value;
+        }
+        upDate();
+        function Observer (data) {
+            if(!data || typeof data !='object') {
+                return data;
+            }
+            console.log(Object.keys(data));
+            Object.keys(data).forEach((ele) => {
+                defineRective(data,ele,data[ele]);
+            })
+        }
+        function defineRective(data,key,val) {
+            console.log(val);
+            Observer(val);//判断是否是对象
+            Object.defineProperty(data,key,{
+                get() {
+                    return val;
+                },
+                set(newValue) {
+                    if(newValue == val) return;
+                    val = newValue;
+                    upDate(); 
+                }
+            })
+        }
+        Observer(oData);
+    </script>
+</body>
+</html>
